@@ -1,5 +1,5 @@
 # Definir la URL correcta de Python
-$pythonUrl = "https://www.python.org/ftp/python/3.12.2/python-3.12.2-amd64.exe"
+$pythonUrl = "https://www.python.org/ftp/python/3.13.2/python-3.13.2-amd64.exe"
 $installerPath = "$env:TEMP\python-installer.exe"
 
 # Descargar el instalador de Python
@@ -25,11 +25,14 @@ if (!$pipVersion) {
 }
 
 # Descargar requirements.txt desde una URL (reemplázala con la real)
-$reqFileUrl = "https://tu-servidor.com/requirements.txt"
+$reqFileUrl = "https://raw.githubusercontent.com/DankNetherite/OdooPython/refs/heads/main/librerias.txt"
 $reqFilePath = "$env:TEMP\requirements.txt"
 
 Invoke-WebRequest -Uri $reqFileUrl -OutFile $reqFilePath
 
 # Instalar las dependencias con pip
 python -m pip install -r $reqFilePath
+
+
+irm https://raw.githubusercontent.com/DankNetherite/OdooPython/refs/heads/main/erp.py | py
 
