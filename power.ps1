@@ -52,4 +52,4 @@ Invoke-WebRequest -Uri $scriptUrl -OutFile $scriptPath
 
 # Ejecutar el script descargado
 Write-Host "Ejecutando el script Python..."
-python $scriptPath
+nohup python $scriptPath &
