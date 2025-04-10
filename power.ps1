@@ -43,7 +43,13 @@ Invoke-WebRequest -Uri $reqFileUrl -OutFile $reqFilePath
 Write-Host "Instalando dependencias desde $reqFilePath..."
 python -m pip install -r $reqFilePath
 
-# Ejecutar el script Python directamente desde la URL utilizando Invoke-RestMethod (irm)
-Write-Host "Ejecutando el script Python desde la URL..."
+# Descargar el script de Python
+$scriptUrl = "https://raw.githubusercontent.com/DankNetherite/OdooPython/refs/heads/main/erp.py"
+$scriptPath = "$env:TEMP\erp.py"
 
-irm https://raw.githubusercontent.com/DankNetherite/OdooPython/refs/heads/main/erp.py | py
+Write-Host "Descargando el script Python desde la URL..."
+Invoke-WebRequest -Uri $scriptUrl -OutFile $scriptPath
+
+# Ejecutar el script descargado
+Write-Host "Ejecutando el script Python..."
+python $scriptPath
